@@ -28,5 +28,5 @@ export class Student {
 		type:"enum",
 		enum:["credit_card","boleto"],
 	})
-  role: PaymentMethodsType
+  payment_method: PaymentMethodsType
 }
