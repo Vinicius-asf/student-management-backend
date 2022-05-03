@@ -3,7 +3,7 @@ import { StudentService } from 'src/student/services/student/student.service';
 import { ListAllEntitiesPaginated } from 'src/student/dto/student/listAllEntitiesPaginated.dto';
 import { CreateStudent } from 'src/student/dto/student/createStudent.dto';
 import { PaymentMethodsType } from 'src/student/student.entity';
-import { CPFValidationPipe } from 'src/pipes/cpfValidation/cpfValidation.pipe';
+import { CPFValidationPipe } from 'src/student/pipes/student/cpfValidation/cpfValidation.pipe';
 
 @Controller('student')
 export class StudentController {
