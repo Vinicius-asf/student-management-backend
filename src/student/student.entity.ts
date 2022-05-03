@@ -14,7 +14,7 @@ export class Student {
   name: string;
 
   @Column({
-		length:15,
+		length:14,
 		unique:true,
 	})
   cpf: string;
