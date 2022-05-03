@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { StudentModule } from './student/student.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { EnrollmentModule } from './enrollment/enrollment.module';
 import entities from './app.entities';
 @Module({
   imports: [
@@ -21,6 +22,7 @@ import entities from './app.entities';
       inject: [ConfigService],
     }),
     StudentModule,
+    EnrollmentModule,
   ],
   controllers: [],
   providers: [],
