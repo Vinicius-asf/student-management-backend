@@ -1,8 +1,8 @@
 {
   "name": "student-management-backend",
-  "version": "0.0.1",
-  "description": "",
-  "author": "",
+  "version": "0.0.2",
+  "description": "NestJS API for student enrollment management",
+  "author": "viniciusant3@gmail.com",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
