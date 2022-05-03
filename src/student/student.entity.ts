@@ -14,15 +14,16 @@ export class Student {
   name: string;
 
   @Column({
-		length:15,
+		length:14,
 		unique:true,
 	})
   cpf: string;
 
   @Column({
-		nullable:true
+		nullable:true,
+		type:'date'
 	})
-  birthdate: Date;
+  birthdate: string;
 
 	@Column({
 		type:"enum",
