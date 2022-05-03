@@ -11,8 +11,8 @@ export class StudentController {
 
   @Get()
   public async find(
-    @Param('page') page: number,
-    @Param('count') count: number,
+    @Body('page') page: number,
+    @Body('count') count: number,
   ): Promise<ListAllEntitiesPaginated> {
     return this.studentService.find(page, count);
   }
