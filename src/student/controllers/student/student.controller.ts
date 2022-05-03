@@ -1,4 +1,11 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  HttpException,
+  HttpStatus,
+  Post,
+} from '@nestjs/common';
 import { StudentService } from 'src/student/services/student/student.service';
 import { ListAllEntitiesPaginated } from 'src/student/dto/student/listAllEntitiesPaginated.dto';
 import { CreateStudent } from 'src/student/dto/student/createStudent.dto';
@@ -29,11 +36,22 @@ export class StudentController {
     @Body('payment_method', PaymentMethodValidationPipe)
     payment_method: PaymentMethodsType,
   ): Promise<CreateStudent> {
-    return await this.studentService.create(
-      name,
-      cpf,
-      birthdate,
-      payment_method,
-    );
+    try {
+      return await this.studentService.create(
+        name,
+        cpf,
+        birthdate,
+        payment_method,
+      );
+    } catch (error) {
+      if (error && error.detail && error.table) {
+        throw new HttpException(error.detail, HttpStatus.BAD_REQUEST);
+      } else {
+        throw new HttpException(
+          'Internal server error',
+          HttpStatus.INTERNAL_SERVER_ERROR,
+        );
+      }
+    }
   }
 }
