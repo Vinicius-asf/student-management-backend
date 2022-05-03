@@ -3,6 +3,8 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Student } from 'src/app.entities';
 import { Repository } from 'typeorm';
 import { ListAllEntitiesPaginated } from 'src/student/dto/student/listAllEntitiesPaginated.dto';
+import { CreateStudent } from 'src/student/dto/student/createStudent.dto';
+import { PaymentMethodsType } from 'src/student/student.entity';
 @Injectable()
 export class StudentService {
   constructor(
@@ -21,6 +23,23 @@ export class StudentService {
     return {
       page: page,
       items: response,
+    };
+  }
+
+  public async create(
+    name: string,
+    cpf: string,
+    birthdate: string,
+    payment_method: PaymentMethodsType,
+  ): Promise<CreateStudent> {
+    const dataCreated: number = await this.studentRepository.create({
+      name: name,
+      cpf: cpf,
+      birthdate: birthdate,
+      payment_method: payment_method,
+    }).id;
+    return {
+      id: dataCreated,
     };
   }
 }
