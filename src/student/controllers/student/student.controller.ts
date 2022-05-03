@@ -14,7 +14,7 @@ export class StudentController {
     @Body('page') page: number,
     @Body('count') count: number,
   ): Promise<ListAllEntitiesPaginated> {
-    return this.studentService.find(page, count);
+    return await this.studentService.find(page, count);
   }
 
   @Post()
@@ -24,6 +24,11 @@ export class StudentController {
     @Body('birthdate') birthdate: string,
     @Body('payment_method') payment_method: PaymentMethodsType,
   ): Promise<CreateStudent> {
-    return this.studentService.create(name, cpf, birthdate, payment_method);
+    return await this.studentService.create(
+      name,
+      cpf,
+      birthdate,
+      payment_method,
+    );
   }
 }

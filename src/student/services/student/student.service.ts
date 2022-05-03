@@ -22,7 +22,13 @@ export class StudentService {
     });
     return {
       page: page,
-      items: response,
+      items: response.map((student) => {
+        student.birthdate = new Date(student.birthdate).toLocaleString(
+          'pt-BR',
+          { dateStyle: 'short' },
+        );
+        return student;
+      }),
     };
   }
 
@@ -32,14 +38,16 @@ export class StudentService {
     birthdate: string,
     payment_method: PaymentMethodsType,
   ): Promise<CreateStudent> {
-    const dataCreated: number = await this.studentRepository.create({
+    const newEntity = this.studentRepository.create({
       name: name,
       cpf: cpf,
       birthdate: birthdate,
       payment_method: payment_method,
-    }).id;
+    });
+    const response = await this.studentRepository.save(newEntity);
+    console.log(response);
     return {
-      id: dataCreated,
+      id: response.id,
     };
   }
 }
