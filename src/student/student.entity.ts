@@ -20,9 +20,10 @@ export class Student {
   cpf: string;
 
   @Column({
-		nullable:true
+		nullable:true,
+		type:'date'
 	})
-  birthdate: Date;
+  birthdate: string;
 
 	@Column({
 		type:"enum",
