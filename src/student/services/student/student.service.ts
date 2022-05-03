@@ -23,10 +23,12 @@ export class StudentService {
     return {
       page: page,
       items: response.map((student) => {
-        student.birthdate = new Date(student.birthdate).toLocaleString(
-          'pt-BR',
-          { dateStyle: 'short' },
-        );
+        student.birthdate
+          ? (student.birthdate = new Date(student.birthdate).toLocaleString(
+              'pt-BR',
+              { dateStyle: 'short' },
+            ))
+          : null;
         return student;
       }),
     };
