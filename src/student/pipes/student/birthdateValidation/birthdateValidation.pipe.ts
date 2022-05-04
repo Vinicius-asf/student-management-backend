@@ -8,7 +8,7 @@ import {
 @Injectable()
 export class BirthdateValidationPipe implements PipeTransform {
   transform(value: null | string, metadata: ArgumentMetadata) {
-    if (value === null) {
+    if (value === null || value === '' || value === undefined) {
       return value;
     } else {
       const dateArray = value.split('/');

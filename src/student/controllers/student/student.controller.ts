@@ -37,7 +37,8 @@ export class StudentController {
   public async create(
     @Body('name', EmptyValueValidationPipe) name: string,
     @Body('cpf', CPFValidationPipe) cpf: string,
-    @Body('birthdate', BirthdateValidationPipe) birthdate: string,
+    @Body('birthdate', BirthdateValidationPipe)
+    birthdate: string | null | undefined,
     @Body('payment_method', PaymentMethodValidationPipe)
     payment_method: PaymentMethodsType,
   ): Promise<CreateStudent> {
