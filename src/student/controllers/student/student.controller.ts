@@ -7,14 +7,17 @@ import {
   Post,
 } from '@nestjs/common';
 import { StudentService } from 'src/student/services/student/student.service';
-import { ListAllEntitiesPaginated } from 'src/student/dto/student/listAllEntitiesPaginated.dto';
+import {
+  ListAllEntitiesPaginated,
+  listAllStudentsRequest,
+} from 'src/student/dto/student/listAllEntitiesPaginated.dto';
 import { CreateStudent } from 'src/student/dto/student/createStudent.dto';
 import { PaymentMethodsType } from 'src/student/student.entity';
 import { CPFValidationPipe } from 'src/student/pipes/student/cpfValidation/cpfValidation.pipe';
-import { GreaterThanZeroValidationPipe } from 'src/pipes/GreaterThanZeroValidationPipe/GreaterThanZeroValidation.pipe';
 import { EmptyValueValidationPipe } from 'src/pipes/EmptyValueValidationPipe/emptyValueValidation.pipe';
 import { BirthdateValidationPipe } from 'src/student/pipes/student/birthdateValidation/birthdateValidation.pipe';
 import { PaymentMethodValidationPipe } from 'src/student/pipes/student/paymentMethodValidation/paymentMethodValidation.pipe';
+import { ValidationPipe } from 'src/pipes/ValidationPipe/validation.pipe';
 
 @Controller('student')
 export class StudentController {
@@ -22,10 +25,13 @@ export class StudentController {
 
   @Get()
   public async find(
-    @Body('page', GreaterThanZeroValidationPipe) page: number,
-    @Body('count', GreaterThanZeroValidationPipe) count: number,
+    @Body(new ValidationPipe())
+    paginationOptions: listAllStudentsRequest,
   ): Promise<ListAllEntitiesPaginated> {
-    return await this.studentService.find(page, count);
+    return await this.studentService.find(
+      paginationOptions.page,
+      paginationOptions.count,
+    );
   }
 
   @Post()
