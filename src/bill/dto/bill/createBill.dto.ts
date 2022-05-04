@@ -14,5 +14,18 @@ export class CreateBill {
   due_date: Date;
 
   @IsEnum(StatusType)
-  status: StatusType;
+  status: StatusType | null;
+}
+
+export class CreateDefaultBill {
+  @IsInt()
+  @Min(1)
+  enrollment_id: number;
+
+  @IsInt()
+  @Min(1)
+  amount: number;
+
+  @IsDate()
+  due_date: Date;
 }
