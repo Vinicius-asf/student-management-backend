@@ -1,3 +1,4 @@
+import { IsInt, Max, Min } from 'class-validator';
 import { Student } from 'src/app.entities';
 import {
   Entity,
@@ -10,20 +11,38 @@ import {
 @Entity()
 export class Enrollment {
   @PrimaryGeneratedColumn()
+  @IsInt()
   id: number;
 
   @ManyToOne(() => Student, (student) => student.id, {
     onDelete: 'CASCADE',
   })
   @JoinColumn({ name: 'student_id' })
+  @IsInt()
   student: Student;
 
-  @Column('integer')
+  @Column({
+    type: 'integer',
+    nullable: false,
+  })
+  @IsInt()
+  @Min(0)
   amount: number;
 
-  @Column('integer')
+  @Column({
+    type: 'integer',
+    nullable: false,
+  })
+  @IsInt()
+  @Min(1)
   installments: number;
 
-  @Column('integer')
+  @Column({
+    type: 'integer',
+    nullable: false,
+  })
+  @IsInt()
+  @Min(1)
+  @Max(31)
   due_day: number;
 }
