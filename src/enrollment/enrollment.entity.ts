@@ -26,7 +26,7 @@ export class Enrollment {
     nullable: false,
   })
   @IsInt()
-  @Min(0)
+  @Min(1)
   amount: number;
 
   @Column({
@@ -34,7 +34,7 @@ export class Enrollment {
     nullable: false,
   })
   @IsInt()
-  @Min(1)
+  @Min(2)
   installments: number;
 
   @Column({
