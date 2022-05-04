@@ -1,6 +1,9 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
-export type PaymentMethodsType = 'credit_card' | 'boleto';
+export enum PaymentMethodsType {
+  'credit_card',
+  'boleto',
+}
 
 @Entity()
 export class Student {
