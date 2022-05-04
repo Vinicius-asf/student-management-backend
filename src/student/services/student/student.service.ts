@@ -37,7 +37,7 @@ export class StudentService {
   public async create(
     name: string,
     cpf: string,
-    birthdate: string,
+    birthdate: string | null | undefined,
     payment_method: PaymentMethodsType,
   ): Promise<CreateStudent> {
     const newEntity = this.studentRepository.create({
@@ -47,7 +47,6 @@ export class StudentService {
       payment_method: payment_method,
     });
     const response = await this.studentRepository.save(newEntity);
-    console.log(response);
     return {
       id: response.id,
     };

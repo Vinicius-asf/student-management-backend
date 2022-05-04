@@ -1,33 +1,40 @@
-/* eslint-disable prettier/prettier */
+import { IsEnum, IsInt, IsNotEmpty, IsString } from 'class-validator';
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
-export type PaymentMethodsType = "credit_card" | "boleto";
+export enum PaymentMethodsType {
+  'credit_card',
+  'boleto',
+}
 
 @Entity()
 export class Student {
   @PrimaryGeneratedColumn()
+  @IsInt()
   id: number;
 
   @Column({
-		nullable:false
-	})
+    nullable: false,
+  })
+  @IsString()
+  @IsNotEmpty()
   name: string;
 
   @Column({
-		length:14,
-		unique:true,
-	})
+    length: 14,
+    unique: true,
+  })
   cpf: string;
 
   @Column({
-		nullable:true,
-		type:'date'
-	})
+    nullable: true,
+    type: 'date',
+  })
   birthdate: string;
 
-	@Column({
-		type:"enum",
-		enum:["credit_card","boleto"],
-	})
-  payment_method: PaymentMethodsType
+  @Column({
+    type: 'enum',
+    enum: ['credit_card', 'boleto'],
+  })
+  @IsEnum(PaymentMethodsType)
+  payment_method: PaymentMethodsType;
 }

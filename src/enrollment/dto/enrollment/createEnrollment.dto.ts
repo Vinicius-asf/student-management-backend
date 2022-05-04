@@ -11,7 +11,7 @@ export class CreateEnrollmentRequest {
   amount: number;
 
   @IsInt()
-  @Min(0)
+  @Min(2)
   installments: number;
 
   @IsInt()
