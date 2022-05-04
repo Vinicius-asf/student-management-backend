@@ -30,6 +30,7 @@ export class Bill {
 
   @Column({
     type: 'integer',
+    nullable: false,
   })
   @IsInt()
   @Min(1)
@@ -37,6 +38,7 @@ export class Bill {
 
   @Column({
     type: 'date',
+    nullable: false,
   })
   @IsDate()
   due_date: Date;
@@ -44,7 +46,8 @@ export class Bill {
   @Column({
     type: 'enum',
     enum: StatusType,
-    default: 'open',
+    default: StatusType.open,
+    nullable: false,
   })
   @IsEnum(StatusType)
   status: StatusType;
