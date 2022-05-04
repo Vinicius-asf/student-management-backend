@@ -9,7 +9,6 @@ import {
 import { CreateEnrollmentRequest } from 'src/enrollment/dto/enrollment/createEnrollment.dto';
 import { ListAllEnrollmentsPaginatedRequest } from 'src/enrollment/dto/enrollment/listAllEnrollmentsPaginated.dto';
 import { EnrollmentService } from 'src/enrollment/services/enrollment/enrollment.service';
-import { ValidationPipe } from 'src/pipes/ValidationPipe/validation.pipe';
 
 @Controller('enrollment')
 export class EnrollmentController {
@@ -17,7 +16,7 @@ export class EnrollmentController {
 
   @Get()
   public async find(
-    @Body(new ValidationPipe())
+    @Body()
     paginationOptions: ListAllEnrollmentsPaginatedRequest,
   ) {
     try {
@@ -36,7 +35,7 @@ export class EnrollmentController {
 
   @Post()
   public async create(
-    @Body(new ValidationPipe())
+    @Body()
     enrollment: CreateEnrollmentRequest,
   ) {
     try {

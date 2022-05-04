@@ -17,7 +17,6 @@ import { CPFValidationPipe } from 'src/student/pipes/student/cpfValidation/cpfVa
 import { EmptyValueValidationPipe } from 'src/pipes/EmptyValueValidationPipe/emptyValueValidation.pipe';
 import { BirthdateValidationPipe } from 'src/student/pipes/student/birthdateValidation/birthdateValidation.pipe';
 import { PaymentMethodValidationPipe } from 'src/student/pipes/student/paymentMethodValidation/paymentMethodValidation.pipe';
-import { ValidationPipe } from 'src/pipes/ValidationPipe/validation.pipe';
 
 @Controller('student')
 export class StudentController {
