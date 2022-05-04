@@ -19,7 +19,7 @@ export class Enrollment {
   })
   @JoinColumn({ name: 'student_id' })
   @IsInt()
-  student: Student;
+  student_id: number;
 
   @Column({
     type: 'integer',

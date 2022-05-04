@@ -26,7 +26,7 @@ export class Bill {
   })
   @JoinColumn({ name: 'enrollment_id' })
   @IsInt()
-  enrollment: Enrollment;
+  enrollment_id: number;
 
   @Column({
     type: 'integer',

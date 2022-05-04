@@ -50,7 +50,7 @@ export class EnrollmentService {
       enrollment.amount / enrollment.installments,
     );
     const due_date = new Date();
-    due_date.setDate(5);
+    due_date.setDate(enrollment.due_day);
     if (due_date < new Date()) {
       due_date.setMonth(due_date.getMonth() + 1);
     }
@@ -64,7 +64,7 @@ export class EnrollmentService {
         amount: Math.min(remaining_amount, installments_amount),
         due_date: due_date,
       };
-      const newBill = await this.billService.create(bill);
+      await this.billService.create(bill);
       remaining_amount -= installments_amount;
       due_date.setMonth(due_date.getMonth() + 1);
     }
