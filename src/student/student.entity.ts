@@ -1,3 +1,4 @@
+import { IsEnum, IsInt, IsNotEmpty, IsString } from 'class-validator';
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 export enum PaymentMethodsType {
@@ -8,11 +9,14 @@ export enum PaymentMethodsType {
 @Entity()
 export class Student {
   @PrimaryGeneratedColumn()
+  @IsInt()
   id: number;
 
   @Column({
     nullable: false,
   })
+  @IsString()
+  @IsNotEmpty()
   name: string;
 
   @Column({
@@ -31,5 +35,6 @@ export class Student {
     type: 'enum',
     enum: ['credit_card', 'boleto'],
   })
+  @IsEnum(PaymentMethodsType)
   payment_method: PaymentMethodsType;
 }

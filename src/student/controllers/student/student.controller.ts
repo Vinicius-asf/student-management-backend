@@ -25,7 +25,7 @@ export class StudentController {
 
   @Get()
   public async find(
-    @Body(new ValidationPipe())
+    @Body()
     paginationOptions: listAllStudentsRequest,
   ): Promise<ListAllEntitiesPaginated> {
     return await this.studentService.find(
