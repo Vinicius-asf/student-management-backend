@@ -22,10 +22,11 @@ export class Bill {
 
   @ManyToOne(() => Enrollment, (enrollment) => enrollment.id, {
     onDelete: 'CASCADE',
+    eager: true,
   })
   @JoinColumn({ name: 'enrollment_id' })
   @IsInt()
-  student: Enrollment;
+  enrollment: Enrollment;
 
   @Column({
     type: 'integer',
