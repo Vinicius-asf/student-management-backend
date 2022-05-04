@@ -2,6 +2,10 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Enrollment } from 'src/app.entities';
 import {
+  CreateEnrollment,
+  CreateEnrollmentRequest,
+} from 'src/enrollment/dto/enrollment/createEnrollment.dto';
+import {
   ListAllEnrollmentsPaginatedRequest,
   ListAllEnrollmentsPaginatedResponse,
 } from 'src/enrollment/dto/enrollment/listAllEnrollmentsPaginated.dto';
@@ -24,6 +28,16 @@ export class EnrollmentService {
     return {
       page: paginationOptions.page,
       items: queryResponse,
+    };
+  }
+
+  public async create(
+    enrollment: CreateEnrollmentRequest,
+  ): Promise<CreateEnrollment> {
+    const newEntity = this.enrollmentRepository.create(enrollment);
+    const response = await this.enrollmentRepository.save(newEntity);
+    return {
+      id: response.id,
     };
   }
 }
