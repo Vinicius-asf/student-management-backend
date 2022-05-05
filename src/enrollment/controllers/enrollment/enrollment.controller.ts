@@ -20,7 +20,7 @@ export class EnrollmentController {
     paginationOptions: ListAllEnrollmentsPaginatedRequest,
   ) {
     try {
-      return this.enrollmentService.find(paginationOptions);
+      return await this.enrollmentService.find(paginationOptions);
     } catch (error) {
       if (error && error.detail && error.table) {
         throw new HttpException(error.detail, HttpStatus.BAD_REQUEST);
@@ -39,7 +39,7 @@ export class EnrollmentController {
     enrollment: CreateEnrollmentRequest,
   ) {
     try {
-      return this.enrollmentService.create(enrollment);
+      return await this.enrollmentService.create(enrollment);
     } catch (error) {
       if (error && error.detail && error.table) {
         throw new HttpException(error.detail, HttpStatus.BAD_REQUEST);
