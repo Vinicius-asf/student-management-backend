@@ -40,7 +40,7 @@ export class Bill {
     nullable: false,
   })
   @IsDate()
-  due_date: Date;
+  due_date: Date | string;
 
   @Column({
     type: 'enum',
