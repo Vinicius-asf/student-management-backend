@@ -5,7 +5,9 @@ import {
   HttpException,
   HttpStatus,
   Post,
+  UseGuards,
 } from '@nestjs/common';
+import { AuthGuard } from '@nestjs/passport';
 import { CreateEnrollmentRequest } from 'src/enrollment/dto/enrollment/createEnrollment.dto';
 import { ListAllEnrollmentsPaginatedRequest } from 'src/enrollment/dto/enrollment/listAllEnrollmentsPaginated.dto';
 import { EnrollmentService } from 'src/enrollment/services/enrollment/enrollment.service';
@@ -34,6 +36,7 @@ export class EnrollmentController {
   }
 
   @Post()
+  @UseGuards(AuthGuard('basic'))
   public async create(
     @Body()
     enrollment: CreateEnrollmentRequest,
