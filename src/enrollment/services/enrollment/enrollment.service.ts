@@ -27,10 +27,27 @@ export class EnrollmentService {
       skip: (paginationOptions.page - 1) * paginationOptions.count,
       take: paginationOptions.count,
     });
+    const response: Enrollment[] = await this.formatBillDueDate(queryResponse);
     return {
       page: paginationOptions.page,
-      items: queryResponse,
+      items: response,
     };
+  }
+
+  private async formatBillDueDate(
+    enrollments: Enrollment[],
+  ): Promise<Enrollment[]> {
+    const newEnrollments = enrollments.map((enrollment) => {
+      enrollment.bills = enrollment.bills.map((bill) => {
+        bill.due_date = new Date(bill.due_date).toLocaleString('pt-BR', {
+          dateStyle: 'short',
+        });
+        console.log(bill.due_date);
+        return bill;
+      });
+      return enrollment;
+    });
+    return newEnrollments;
   }
 
   public async create(
