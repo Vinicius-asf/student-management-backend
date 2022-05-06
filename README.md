@@ -7,21 +7,13 @@ Solução feita com [PostgreSQL 14](https://www.postgresql.org/) e [NestJS](http
 ## Premissas
 
 1. Ja esteja com PostgreSQL instalado e com as informações para se conectar a um banco de dados PostgreSQL
-2. .env presente na raiz do projeto contendo [link para um .env de exemplo](https://drive.google.com/file/d/1rDRwPfIAjiW9Vub5yMdwEfYu0GhEVTdt/view?usp=sharing):
+2. .env presente na raiz do projeto contendo [link para um .env de exemplo](https://drive.google.com/file/d/1GvAqZWglp9wkefN3KliCe2LQXJGEnBFq/view?usp=sharing):
 
-      DB_HOST=<url_para_onde_o_DB_esta_hospedado>
+      DATABASE_URL='postgres://{DB_USERNAME}:{DB_USER_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}'
+      
+      HTTP_BASIC_USER='usuario_admin: 'admin_ops''
 
-      DB_PORT=<porta_usada_para_comunicação_com_DB>
-
-      DB_USERNAME=<usuario_para_conectar_ao_DB>
-
-      DB_PASSWORD=<senha_para_autenticar_o_usuario>
-
-      DB_NAME=<nome_do_banco_de_dados>
-
-      HTTP_BASIC_USER=<usuario_admin: 'admin_ops'>
-
-      HTTP_BASIC_PASS=<senha_admin: 'billing'>
+      HTTP_BASIC_PASS='senha_admin: 'billing''
       
 ## Setup
 
