@@ -1,3 +1,40 @@
+# Gestão de estudantes e matrículas
+
+Versão para avaliação de [teste de backend](https://gist.github.com/sHilgert/9906b37034a077553ad47e66358174a7)
+
+Solução feita com [PostgreSQL 14](https://www.postgresql.org/) e [NestJS](https://nestjs.com/) (bootstrap do NestJS)
+
+## Premissas
+
+1. Ja esteja com PostgreSQL instalado e com as informações para se conectar a um banco de dados PostgreSQL
+2. .env presente na raiz do projeto contendo [link para um .env de exemplo](https://drive.google.com/file/d/1rDRwPfIAjiW9Vub5yMdwEfYu0GhEVTdt/view?usp=sharing):
+
+      DB_HOST=<url_para_onde_o_DB_esta_hospedado>
+
+      DB_PORT=<porta_usada_para_comunicação_com_DB>
+
+      DB_USERNAME=<usuario_para_conectar_ao_DB>
+
+      DB_PASSWORD=<senha_para_autenticar_o_usuario>
+
+      DB_NAME=<nome_do_banco_de_dados>
+
+      HTTP_BASIC_USER=<usuario_admin: 'admin_ops'>
+
+      HTTP_BASIC_PASS=<senha_admin: 'billing'>
+      
+## Setup
+
+1. Clone este repositório
+2. Instale os pacotes necessários (Instrução na seção "Installing" abaixo)
+3. Baixe ou insira um .env na raiz do projeto como especificado acima
+
+## Uso
+
+1. Para iniciar a aplicação, use as instruções na seção "Running the app" abaixo
+2. Para testar a aplicação, use as instruções na seção "Test" abaixo
+
+______
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
