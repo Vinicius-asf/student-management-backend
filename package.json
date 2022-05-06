@@ -5,6 +5,9 @@
   "author": "viniciusant3@gmail.com",
   "private": true,
   "license": "UNLICENSED",
+  "engines": {
+    "node":"v14.18.2"
+  },
   "scripts": {
     "prebuild": "rimraf dist",
     "build": "nest build",
