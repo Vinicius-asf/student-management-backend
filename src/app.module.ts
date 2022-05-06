@@ -14,7 +14,7 @@ import entities from './app.entities';
       useFactory: (configService: ConfigService) => ({
         type: 'postgres',
         url: configService.get('DATABASE_URL'),
-        ssl: true,
+        ssl: { rejectUnauthorized: false },
         entities: entities,
         synchronize: true,
       }),
