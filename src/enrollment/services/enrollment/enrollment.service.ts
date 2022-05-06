@@ -42,7 +42,6 @@ export class EnrollmentService {
         bill.due_date = new Date(bill.due_date).toLocaleString('pt-BR', {
           dateStyle: 'short',
         });
-        console.log(bill.due_date);
         return bill;
       });
       return enrollment;
